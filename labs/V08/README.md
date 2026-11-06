@@ -4,13 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    SM[(Secrets Manager)] --> APP
-    APP --> RED[Redacción]
-    RED --> LOGS[Logs / auditoría]
-    APP -->|firma HMAC| MCP[Servidor MCP]
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="306">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

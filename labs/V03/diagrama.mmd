@@ -1,0 +1,5 @@
+flowchart TB
+    AGENT --> GATE["Tool Gateway"]
+    GATE --> CLIENT["MCP Client"]
+    CLIENT --> SERVER["Maintenance MCP Server"]
+    SERVER --> DATA["Equipos / sensores / historial"]

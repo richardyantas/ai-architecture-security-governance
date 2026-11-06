@@ -1,0 +1,6 @@
+flowchart TB
+    USER["Técnico"] --> API["POST /diagnose"]
+    API --> SERVICE["Diagnosis Service"]
+    SERVICE --> PROVIDER["LLM Provider"]
+    PROVIDER --> IMPL["OpenAI / Mock"]
+    SERVICE --> RESP["Structured diagnosis"]

@@ -1,0 +1,4 @@
+flowchart TB
+    PR --> CI["lint/test/scan"] --> BUILD["Build imagen"] --> ECR[("ECR por digest")]
+    ECR --> DEPLOY["Deploy"] --> SMOKE["smoke_test"]
+    TF["Terraform"] -. infra .-> DEPLOY

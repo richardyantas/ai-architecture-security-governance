@@ -1,0 +1,9 @@
+TOKEN=$(.venv/bin/python scripts/mint_token.py))
+
+curl localhost:8000/diagnose \
+  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{"incident_id":"INC-204","equipment_id":"P-204","plant_id":"PLANT-A","symptoms":["vibracion alta"]}'
+
+{"incident_id":"INC-204","run_id":"RUN-a813419ae22d","status":"completed","observations":[{"name":"bearing_temperature","value":86.0,"unit":"C","source":"tool:get_sensor_readings","equipment_id":"P-204"},{"name":"discharge_pressure","value":2.8,"unit":"bar","source":"tool:get_sensor_readings","equipment_id":"P-204"},{"name":"vibration","value":8.4,"unit":"mm/s","source":"tool:get_sensor_readings","equipment_id":"P-204"}],"hypotheses":[{"cause":"misalignment between pump and motor","confidence":0.8,"evidence_ids":["FH-014"],"rationale":"The current symptoms of high vibration and high bearing temperature are consistent with previous failures in similar equipment where misalignment was confirmed as the cause."}],"recommended_checks":["Check alignment of pump and motor","Inspect for any loose foundations or supports","Verify the conditionof the bearings"],"citations":[{"source_id":"FH-014","source_type":"failure","snippet":"Falla FH-014 en P-204 (pump, PLANT-A). Sintomas: high_vibration axial_vibration high_bearing_temperature. Causa confirmada: desalineacion bomba-motor [misalignment]. Acciones: Alineacion laser del acople; Revision de pata coja; Verificar tu"}],"proposed_actions":[{"action_id":"ACT-8ae2c2dadc0c","action_type":"draft_work_order","summary":"Perform laser alignment of pump and motor","params":{"equipment_id":"P-204"},"decision":"allowed","reason":"policy rule for 'draft_work_order'","approval_id":null}],"trace_id":"TRC-b752bc47ef3e","resumed":true,"prior_run_count":5,"steps":3,"node_timings_ms":{"load_incident":1875.012,"retrieve":1772.592,"reason":6343.283,"tools":3450.354,"diagnose":2940.075,"persist":2466.299}}%  
+
+sudo snap install terraform --classic

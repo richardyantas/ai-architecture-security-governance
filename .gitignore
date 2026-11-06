@@ -17,3 +17,6 @@ dist/
 *.egg-info/
 evaluation_report.json
 .coverage
+.claude/
+manualdocente.md
+manual-aws-supabse.md

@@ -1,0 +1,6 @@
+flowchart TB
+    LOAD["Load incident"] --> THINK["Reasoning"]
+    THINK --> D{"¿Falta evidencia?"}
+    D -->|Sí| TOOLS["Tool node"] --> THINK
+    D -->|No| RESULT["Diagnosis"]
+    RESULT --> SAVE["Persist run/hypotheses"]

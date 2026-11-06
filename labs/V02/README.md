@@ -4,15 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    API --> SVC[Diagnosis Service]
-    SVC --> RET[Retriever]
-    RET --> FILTER[Filtro planta/equipo]
-    FILTER --> VDB[(pgvector)]
-    VDB --> EV[Historial + source_id]
-    EV --> SVC
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="184">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

@@ -4,12 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    TECH[Técnico] --> DIAG[/diagnose P-204/] --> RAG & MCP
-    DIAG --> HYP[Hipótesis + citas]
-    HYP --> ACT[Orden sugerida] --> APPR[Aprobación supervisor] --> AUD[Auditoría]
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="469">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

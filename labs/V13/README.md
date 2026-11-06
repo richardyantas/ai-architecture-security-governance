@@ -4,13 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    REQ --> IDS[incident_id + run_id + trace_id]
-    IDS --> LOG[Logs JSON]
-    IDS --> AUD[Auditoría append-only]
-    IDS --> LAT[Latencia por nodo]
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="469">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

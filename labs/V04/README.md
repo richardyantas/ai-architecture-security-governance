@@ -4,14 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    LOAD[Load incident] --> THINK[Reasoning]
-    THINK --> D{¿Falta evidencia?}
-    D -->|Sí| TOOLS[Tool node] --> THINK
-    D -->|No| RESULT[Diagnosis]
-    RESULT --> SAVE[Persist run/hypotheses]
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="306">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

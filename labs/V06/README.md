@@ -4,13 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    DOC[Documento no confiable] --> WRAP[Delimitado como datos]
-    WRAP --> LLM
-    LLM --> GATE[Tool Gateway + policy]
-    GATE -->|deny| BLOCK[Bloqueado y auditado]
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="143">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

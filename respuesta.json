@@ -1,0 +1,75 @@
+{
+    "incident_id": "INC-204",
+    "run_id": "RUN-3c6701614daf",
+    "status": "completed",
+    "observations": [
+        {
+            "name": "bearing_temperature",
+            "value": 86,
+            "unit": "C",
+            "source": "tool:get_sensor_readings",
+            "equipment_id": "P-204"
+        },
+        {
+            "name": "discharge_pressure",
+            "value": 2.8,
+            "unit": "bar",
+            "source": "tool:get_sensor_readings",
+            "equipment_id": "P-204"
+        },
+        {
+            "name": "vibration",
+            "value": 8.4,
+            "unit": "mm/s",
+            "source": "tool:get_sensor_readings",
+            "equipment_id": "P-204"
+        }
+    ],
+    "hypotheses": [
+        {
+            "cause": "misalignment between pump and motor",
+            "confidence": 0.8,
+            "evidence_ids": [
+                "FH-014"
+            ],
+            "rationale": "The current high vibration and bearing temperature are consistent with previous failures in similar equipment where misalignment was confirmed as the cause."
+        }
+    ],
+    "recommended_checks": [
+        "Check alignment of pump and motor",
+        "Inspect for any loose foundations or supports",
+        "Verify that the piping is not under tension"
+    ],
+    "citations": [
+        {
+            "source_id": "FH-014",
+            "source_type": "failure",
+            "snippet": "Falla FH-014 en P-204 (pump, PLANT-A). Sintomas: high_vibration axial_vibration high_bearing_temperature. Causa confirmada: desalineacion bomba-motor [misalignment]. Acciones: Alineacion laser del acople; Revision de pata coja; Verificar tu"
+        }
+    ],
+    "proposed_actions": [
+        {
+            "action_id": "ACT-8ae2c2dadc0c",
+            "action_type": "draft_work_order",
+            "summary": "Perform laser alignment of pump and motor",
+            "params": {
+                "equipment_id": "P-204"
+            },
+            "decision": "allowed",
+            "reason": "policy rule for 'draft_work_order'",
+            "approval_id": null
+        }
+    ],
+    "trace_id": "TRC-889fd80e593f",
+    "resumed": true,
+    "prior_run_count": 6,
+    "steps": 2,
+    "node_timings_ms": {
+        "load_incident": 1802.646,
+        "retrieve": 2763.559,
+        "reason": 6015.835,
+        "tools": 2227.615,
+        "diagnose": 1007.301,
+        "persist": 2288.362
+    }
+}

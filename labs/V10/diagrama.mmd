@@ -1,0 +1,2 @@
+flowchart TB
+    PR --> LINT["ruff"] --> TESTS["pytest offline"] --> SEC["tests/security"] --> EVAL["run_eval gates"]

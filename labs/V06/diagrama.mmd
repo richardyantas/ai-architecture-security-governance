@@ -1,0 +1,5 @@
+flowchart TB
+    DOC["Documento no confiable"] --> WRAP["Delimitado como datos"]
+    WRAP --> LLM
+    LLM --> GATE["Tool Gateway + policy"]
+    GATE -->|deny| BLOCK["Bloqueado y auditado"]

@@ -1,0 +1,4 @@
+flowchart TB
+    ACTION --> POL["Policy vN"]
+    POL --> DEC["Decision record"]
+    ADMIN["Admin"] -->|POST /policy| POL

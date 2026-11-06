@@ -8,9 +8,13 @@ from __future__ import annotations
 
 import argparse
 import os
+import sys
 import time
+from pathlib import Path
 
 import jwt
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 
 def mint(secret: str, user: str, role: str, plants: list[str], minutes: int = 60, aud: str = "authenticated", iss: str | None = None) -> str:
@@ -27,10 +31,18 @@ def main() -> int:
     ap.add_argument("--plants", default="PLANT-A")
     ap.add_argument("--minutes", type=int, default=60)
     a = ap.parse_args()
-    secret = os.environ.get("JWT_SECRET")
+    # Defaults come from the SAME settings the API uses (.env), so iss/aud/secret always match.
+    # Explicit environment variables still override them.
+    from app.config import get_settings
+
+    s = get_settings()
+    cfg_secret = s.jwt_secret.get_secret_value() if hasattr(s.jwt_secret, "get_secret_value") else s.jwt_secret
+    secret = os.environ.get("JWT_SECRET") or cfg_secret
     if not secret:
-        raise SystemExit("set JWT_SECRET")
-    print(mint(secret, a.user, a.role, a.plants.split(","), a.minutes, os.environ.get("JWT_AUDIENCE", "authenticated"), os.environ.get("JWT_ISSUER") or None))
+        raise SystemExit("set JWT_SECRET (env var or .env)")
+    aud = os.environ.get("JWT_AUDIENCE") or s.jwt_audience or "authenticated"
+    iss = os.environ.get("JWT_ISSUER") or s.jwt_issuer or None
+    print(mint(secret, a.user, a.role, a.plants.split(","), a.minutes, aud, iss))
     return 0
 
 

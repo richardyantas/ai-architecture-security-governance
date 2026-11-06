@@ -1,0 +1,7 @@
+flowchart TB
+    REQ --> JWT["Validación JWT iss/aud/firma"]
+    JWT --> AUTHZ["RBAC + planta"]
+    AUTHZ --> EP["Endpoint"]
+    AUTHZ --> RAG["RAG"]
+    AUTHZ --> MEM["Memoria"]
+    AUTHZ --> MCP["MCP"]

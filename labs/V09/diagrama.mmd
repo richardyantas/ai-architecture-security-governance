@@ -1,0 +1,5 @@
+flowchart TB
+    REQ["Solicitud de acción"] --> POL{"Política"}
+    POL -->|borrador| OK["Permitido"]
+    POL -->|publicar| APPR["Aprobación supervisor"]
+    APPR --> Q["Cola"] --> EX["Executor idempotente"]

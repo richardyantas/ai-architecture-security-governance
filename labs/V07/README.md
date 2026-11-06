@@ -4,15 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    REQ --> JWT[Validación JWT iss/aud/firma]
-    JWT --> AUTHZ[RBAC + planta]
-    AUTHZ --> EP[Endpoint]
-    AUTHZ --> RAG[RAG]
-    AUTHZ --> MEM[Memoria]
-    AUTHZ --> MCP[MCP]
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="632">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

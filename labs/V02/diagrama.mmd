@@ -1,0 +1,7 @@
+flowchart TB
+    API --> SVC["Diagnosis Service"]
+    SVC --> RET["Retriever"]
+    RET --> FILTER["Filtro planta/equipo"]
+    FILTER --> VDB[("pgvector")]
+    VDB --> EV["Historial + source_id"]
+    EV --> SVC

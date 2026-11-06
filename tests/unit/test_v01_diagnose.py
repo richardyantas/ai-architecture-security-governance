@@ -75,3 +75,19 @@ def test_openai_provider_maps_errors_to_llmerror(handler):
 def test_missing_api_key_fails_fast():
     with pytest.raises(LLMError):
         OpenAIProvider("", "gpt-test")
+
+
+def test_openai_provider_accepts_qualitative_confidence_words():
+    """Real models sometimes answer confidence as "medium" instead of a number; map it, but still reject junk."""
+    from app.llm.openai_provider import _normalise
+    from app.models import ReasoningOutput
+
+    raw = {"hypotheses": [{"cause": "bearing_wear", "confidence": "Medium", "evidence_ids": ["FH-012"]}]}
+    out = ReasoningOutput.model_validate(_normalise(raw))
+    assert out.hypotheses[0].confidence == 0.6
+
+    import pytest
+    from pydantic import ValidationError
+
+    with pytest.raises(ValidationError):
+        ReasoningOutput.model_validate(_normalise({"hypotheses": [{"cause": "x", "confidence": "banana"}]}))

@@ -4,13 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    REQ[Solicitud de acción] --> POL{Política}
-    POL -->|borrador| OK[Permitido]
-    POL -->|publicar| APPR[Aprobación supervisor]
-    APPR --> Q[Cola] --> EX[Executor idempotente]
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="306">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

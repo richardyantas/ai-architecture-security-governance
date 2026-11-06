@@ -4,14 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    GW[API Gateway] --> R{Ruta}
-    R -->|quick| L[Lambda + Mangum]
-    R -->|extended| E[EC2 + Uvicorn]
-    L --> APP[FastAPI + LangGraph compartido]
-    E --> APP
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="306">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

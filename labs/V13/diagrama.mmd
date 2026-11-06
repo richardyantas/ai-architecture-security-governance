@@ -1,0 +1,5 @@
+flowchart TB
+    REQ --> IDS["incident_id + run_id + trace_id"]
+    IDS --> LOG["Logs JSON"]
+    IDS --> AUD["Auditoría append-only"]
+    IDS --> LAT["Latencia por nodo"]

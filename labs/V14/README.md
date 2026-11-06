@@ -4,12 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    PR --> CI[lint/test/scan] --> BUILD[Build imagen] --> ECR[(ECR por digest)]
-    ECR --> DEPLOY[Deploy] --> SMOKE[smoke_test]
-    TF[Terraform] -.infra.-> DEPLOY
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="306">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

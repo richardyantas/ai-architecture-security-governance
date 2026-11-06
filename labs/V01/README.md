@@ -4,14 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    USER[Técnico] --> API[POST /diagnose]
-    API --> SERVICE[Diagnosis Service]
-    SERVICE --> PROVIDER[LLM Provider]
-    PROVIDER --> IMPL[OpenAI / Mock]
-    SERVICE --> RESP[Structured diagnosis]
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="306">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

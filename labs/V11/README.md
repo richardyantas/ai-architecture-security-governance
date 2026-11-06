@@ -4,12 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    ACTION --> POL[Policy vN]
-    POL --> DEC[Decision record]
-    ADMIN[Admin] -->|POST /policy| POL
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="279">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

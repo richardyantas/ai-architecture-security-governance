@@ -4,13 +4,10 @@
 
 ## Arquitectura
 
-```mermaid
-flowchart TB
-    AGENT --> GATE[Tool Gateway]
-    GATE --> CLIENT[MCP Client]
-    CLIENT --> SERVER[Maintenance MCP Server]
-    SERVER --> DATA[Equipos / sensores / historial]
-```
+<img src="diagrama.svg" alt="Diagrama de arquitectura" width="143">
+
+> Fuente editable: [diagrama.mmd](diagrama.mmd) (regenerar con `scripts/render_diagrams.sh`).
+
 
 ## Archivos principales
 

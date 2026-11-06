@@ -1,0 +1,5 @@
+flowchart TB
+    SM[("Secrets Manager")] --> APP
+    APP --> RED["Redacción"]
+    RED --> LOGS["Logs / auditoría"]
+    APP -->|firma HMAC| MCP["Servidor MCP"]
