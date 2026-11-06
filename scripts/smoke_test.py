@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import urllib.error
 import urllib.request
@@ -44,6 +45,9 @@ def main() -> int:
     ap.add_argument("--secret-id", default="")
     ap.add_argument("--region", default="us-east-1")
     ap.add_argument("--route", default="/diagnose/quick")
+    # The deployed API enforces iss/aud, so the minted token must carry the same values (JWT_ISSUER / JWT_AUDIENCE).
+    ap.add_argument("--issuer", default=os.environ.get("JWT_ISSUER", ""))
+    ap.add_argument("--audience", default=os.environ.get("JWT_AUDIENCE", "authenticated"))
     a = ap.parse_args()
     key = {"x-api-key": a.api_key} if a.api_key else {}
     token = a.token
@@ -51,7 +55,7 @@ def main() -> int:
         import boto3
 
         secret = json.loads(boto3.client("secretsmanager", region_name=a.region).get_secret_value(SecretId=a.secret_id)["SecretString"])["JWT_SECRET"]
-        token = mint(secret, "smoke@example.com", "technician", ["PLANT-A"], minutes=5)
+        token = mint(secret, "smoke@example.com", "technician", ["PLANT-A"], minutes=5, aud=a.audience, iss=a.issuer or None)
     failures: list[str] = []
 
     def check(name: str, ok: bool, detail: str = "") -> None:

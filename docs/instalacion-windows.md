@@ -69,7 +69,9 @@ En Windows el entorno virtual usa `.venv\Scripts\` en lugar de `.venv/bin/`.
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1         
+
 pip install -e ".[dev]"
 Copy-Item .env.example .env
 ```

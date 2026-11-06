@@ -127,6 +127,8 @@ jobs:
           aws ssm get-command-invocation --command-id "$CMD" --instance-id "${{ vars.EC2_INSTANCE_ID }}" --query '[Status,StandardOutputContent]' --output text
       - name: Smoke tests
         id: smoke
+        env:
+          JWT_ISSUER: ${{ vars.JWT_ISSUER }}
         run: |
           python scripts/smoke_test.py --base-url "${{ vars.API_URL }}" --api-key "${{ secrets.API_KEY }}" \
             --secret-id "maintenance-ai/${TARGET_ENV}/app" --region "$AWS_REGION" --route /diagnose/quick
