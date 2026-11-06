@@ -1,4 +1,4 @@
-TOKEN=$(.venv/bin/python scripts/mint_token.py))
+TOKEN=$(.venv/bin/python scripts/mint_token.py)
 
 curl localhost:8000/diagnose \
   -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
